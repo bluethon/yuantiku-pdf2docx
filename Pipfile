@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.douban.com/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pdfminer = "*"
+python-docx = "*"
+
+[dev-packages]
+flake8 = "*"
+black = "*"
+
+[requires]
+
+[pipenv]
+allow_prereleases = true

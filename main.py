@@ -131,7 +131,8 @@ class PDFBox:
     @property
     def is_body(self):
         # 包含4个空格
-        return re.search(r'\s{3,4}[A-Z]\w+', self.text)
+        # `\s?`防止`I xxxx`类型
+        return re.search(r'\s{3,4}[A-Z]\s?\w+', self.text)
 
     @property
     @uni_nornal

@@ -584,8 +584,11 @@ def main():
     FORMAT = (
         '%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s'
     )
+    LOG_NAME = 'debug.log'
+    log_path = Path('logs')
+    log_path.mkdir(parents=True, exist_ok=True)
     logger = logging.getLogger()
-    handler = logging.FileHandler('debug.log', 'w')
+    handler = logging.FileHandler(log_path / LOG_NAME, 'w')
     formatter = logging.Formatter(FORMAT, datefmt='%Y-%m-%d:%H:%M:%S')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
@@ -608,7 +611,7 @@ def main():
     res_text = parse_file(_file)
     subjects = concat_subjects(res_text)
 
-    write_file(subjects, _file, Path('output.txt'))
+    write_file(subjects, _file, Path('logs/output.log'))
     write_to_docx(subjects, _file)
     print(_file)
 
